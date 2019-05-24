@@ -1,5 +1,6 @@
-/// A material design slider and range slider with rtl support and lots of options and customizations for flutter
+import 'dart:core';
 
+/// A material design slider and range slider with rtl support and lots of options and customizations for flutter
 
 /*
 * *
@@ -11,9 +12,8 @@
 * * Now, God only knows "Karl Weierstrass"
 * */
 
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 import 'package:intl/intl.dart' as intl;
-import 'dart:core';
 
 class FlutterSlider extends StatefulWidget {
   final Key key;

@@ -215,8 +215,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
 
-
-
           /*Fixed Values*/
           Container(
             height: 80,
@@ -233,9 +231,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
               onDragging: (handlerIndex, lowerValue, upperValue) {
                 _lowerValue = lowerValue;
-                setState(() {
-
-                });
+                setState(() {});
               },
             ),
           ),

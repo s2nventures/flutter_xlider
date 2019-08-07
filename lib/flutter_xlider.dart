@@ -1,3 +1,5 @@
+import 'dart:core';
+
 /// A material design slider and range slider with horizontal and vertical axis, rtl support and lots of options and customizations for flutter
 
 /*
@@ -12,7 +14,6 @@
 
 import 'package:flutter_web/material.dart';
 import 'package:intl/intl.dart' as intl;
-import 'dart:core';
 
 class FlutterSlider extends StatefulWidget {
   final Key key;

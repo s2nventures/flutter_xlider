@@ -83,7 +83,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 jump: true,
 
                 trackBar: FlutterSliderTrackBar(
-                  activeTrackBarColor: Colors.redAccent,
                   activeTrackBarHeight: 5,
                 ),
                 tooltip: FlutterSliderTooltip(
@@ -136,7 +135,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 step: 100,
                 jump: true,
                 trackBar: FlutterSliderTrackBar(
-                  activeTrackBarColor: Colors.blue.withOpacity(0.6),
                   inactiveTrackBarHeight: 2,
                   activeTrackBarHeight: 3,
                 ),
@@ -197,10 +195,47 @@ class _MyHomePageState extends State<MyHomePage> {
               max: 100,
               min: 0,
               visibleTouchArea: true,
+              trackBar: FlutterSliderTrackBar(
+                inactiveTrackBarHeight: 14,
+                activeTrackBarHeight: 10,
+                inactiveTrackBar: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.black12,
+                  border: Border.all(width: 3, color: Colors.blue),
+                ),
+                activeTrackBar: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    color: Colors.blue.withOpacity(0.5)),
+              ),
               onDragging: (handlerIndex, lowerValue, upperValue) {
                 _lowerValue = lowerValue;
                 _upperValue = upperValue;
                 setState(() {});
+              },
+            ),
+          ),
+
+
+
+          /*Fixed Values*/
+          Container(
+            height: 80,
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: FlutterSlider(
+              jump: true,
+              values: [10],
+              fixedValues: [
+                FlutterSliderFixedValue(percent: 0, value: "1000"),
+                FlutterSliderFixedValue(percent: 10, value: "10K"),
+                FlutterSliderFixedValue(percent: 50, value: 50000),
+                FlutterSliderFixedValue(percent: 80, value: "80M"),
+                FlutterSliderFixedValue(percent: 100, value: "100B"),
+              ],
+              onDragging: (handlerIndex, lowerValue, upperValue) {
+                _lowerValue = lowerValue;
+                setState(() {
+
+                });
               },
             ),
           ),
@@ -223,9 +258,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
               jump: true,
-              trackBar: FlutterSliderTrackBar(
-                activeTrackBarColor: Colors.blue[500],
-              ),
+              trackBar: FlutterSliderTrackBar(),
               handler: FlutterSliderHandler(
                 decoration: BoxDecoration(),
                 child: Container(

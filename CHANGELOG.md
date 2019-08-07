@@ -68,3 +68,24 @@
 ## [2.4.3] - 04/11/2019
 
 * hatchMark label textStyle added
+
+## [2.4.4] - 07/14/2019
+
+* hatchMark label position bug fixed
+* trackbar style changed to BoxDecoration
+
+## [2.4.5] - 07/15/2019
+
+*  min and max validation check while changing slider values manually 
+
+## [2.5.0] - 07/18/2019
+
+*  fixed values feature added
+
+## [2.5.1] - 07/18/2019
+
+* bug fix
+
+## [2.5.2] - 08/06/2019
+
+* orientation bug fix

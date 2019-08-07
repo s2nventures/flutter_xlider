@@ -1,8 +1,8 @@
 # flutter_xlider
 
-(Flutter Xlider) A material design slider and range slider, horizontal and vertical, with rtl support and lots of options and customizations for flutter
+(Flutter Slider) A material design slider and range slider, horizontal and vertical, with rtl support and lots of options and customizations for flutter
 
-**Version 2.4.1 and above, will break functionality of older versions**
+**Version 2.4.4 and above, break functionality of older versions**
 
 ## Get Started
 
@@ -136,13 +136,34 @@ To customize track bars you can use `FlutterSliderTrackBar`. [You can see the de
 FlutterSlider(
   ...
     trackBar: FlutterSliderTrackBar(
-      activeTrackBarColor: Colors.redAccent,
       activeTrackBarHeight: 5,
-      inactiveTrackBarColor: Colors.greenAccent.withOpacity(0.5),
     ),
   ...
 )
 ```
+
+
+`inactiveTrackBarColor` and `activeTrackBarColor` properties are removed. use `inactiveTrackBar` and `activeTrackBar` instead.
+
+```dart
+FlutterSlider(
+  ...
+    trackBar: FlutterSliderTrackBar(
+      inactiveTrackBar: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.black12,
+        border: Border.all(width: 3, color: Colors.blue),
+      ),
+      activeTrackBar: BoxDecoration(
+        borderRadius: BorderRadius.circular(4),
+        color: Colors.blue.withOpacity(0.5)
+      ),
+    ),
+  ...
+)
+```
+
+![](images/trackbar_box_decoration.PNG)
 
 ## Tooltips
 
@@ -307,6 +328,39 @@ FlutterSlider(
 
 ![](images/range-ignore-steps.gif)
 
+
+### Fixed Values
+
+If you want to have an array of fixed items and slide through it, you can use `fixedValues` property. use `FlutterSliderFixedValue` to add your fixed values.  
+`FlutterSliderFixedValue` has following properties:
+
+1. `percent`: (int) ( between 0..100 inclusive). the position of fixed item
+2. `value`: (dynamic) the value of fixed item
+
+* when using `fixedValues`, values of `values` property, must be within 0..100
+
+```dart
+FlutterSlider(
+  ...
+    values: [ 10, 50 ],
+    fixedValues: [
+      FlutterSliderFixedValue(percent: 0, value: "1000"),
+      FlutterSliderFixedValue(percent: 10, value: "10K"),
+      FlutterSliderFixedValue(percent: 50, value: 50000),
+      FlutterSliderFixedValue(percent: 80, value: "80M"),
+      FlutterSliderFixedValue(percent: 100, value: "100B"),
+    ],
+  ...
+)
+```
+
+using above example, you get `(string) 10K` as `upperValue` or `lowerValue` (depends on handler), when you reach to 10 percent of the slider,
+you get `(int) 50000` when you reach 50 percent of the slider and so on...
+ 
+**when using `fixedValues`, `min` and `max` are ignored**
+
+![](images/fixed-values.gif)
+
 ### Minimum Distance
 
 When using range slider, the minimum distance between two handlers can be defined using `minimumDistance` option
@@ -438,7 +492,7 @@ There are 3 events
 
 All three of above functions returns three values. 
 ```dart
-(int handlerIndex, double lowerValue, double upperValue)
+(int handlerIndex, dynamic lowerValue, dynamic upperValue)
 ```
 
 First value is `handlerIndex`, which determines the handler. 0 is `Left Handler` and 1 refers to `Right Handler`
@@ -458,6 +512,10 @@ FlutterSlider(
   ...
 )
 ```
+**If you use `selectByTap`, then only `onDragStarted` and `onDragCompleted` will fire.**
 
 
+## Donate
+if you found this library helpful, and want to say thanks, consider buying me a cup of coffee
 
+My Bitcoin Address: `1PRejtdqsVNfJk9Hzr9WKfH3fTwfSWgn7U`
